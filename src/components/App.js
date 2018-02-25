@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions'
+
+
+import Header from './Header';
 import Landing from './Landing';
+import Footer from './Footer';
+import Login from './Login';
+import Main from './Main';
 
-
-const slides= [
-  {
-    city: 'Mona Rizvi',
-    country: 'Wonder Woman',
-    img: 'https://hdqwalls.com/download/gal-gadot-as-wonder-woman-on-2560x1440.jpg',
-  },
-  {
-    city: 'Mark Sterling',
-    country: 'Superman',
-    img: 'https://www.hdwallpapers.in/walls/superman_in_batman_v_superman_dawn_of_justice-wide.jpg',
-  },
-  {
-    city: 'You',
-    country: 'Iron Man',
-    img: 'http://www.fonstola.ru/pic/201204/2560x1440/fonstola.ru-76287.jpg',
-  },
-  {
-    city: 'Ben Tylor',
-    country: 'Thor',
-    img: 'http://www.cutehdwallpapers.com/uploads/large/thor/thor-free-wallpaper.jpg',
-  },
-  {
-    city: 'Askar Boranbay',
-    country: 'Spiderman',
-    img: 'https://hdqwalls.com/download/spiderman-homecoming-2017-8k-vl-2560x1600.jpg',
-  }
-  ];
 
 class App extends Component {
+  state = {
+    uname: 'srogers',
+    pass: 'topavenger1920'
+  }
+  componentDidMount() {
+    this.props.fetchUser(this.state.uname, this.state.pass);
+  }
+
   render() {
-    return (
-      <Landing slides={slides} />
+    console.log(this.props);
+    return(
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route path="/login" component={Login} />
+            <Route path ="/main" component={Main} />
+            <Footer />
+          </div>
+        </BrowserRouter>      
+      </div>
     );
   }
-}
+};
 
-export default App;
+export default connect(null, actions) (App);

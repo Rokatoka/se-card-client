@@ -2,9 +2,13 @@
   "name": "se-card-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "login": {
+      "target": "http://138.68.108.162:8080/cg-service/api/v1"
+    }
+  },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "node-sass-chokidar": "0.0.3",
+    "axios": "^0.18.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

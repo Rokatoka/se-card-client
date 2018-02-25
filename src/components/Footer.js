@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class Landing extends Component {
+class Footer extends Component {
   render() {
     return (
       <div style ={{ textAlign: 'center' }}>
-        <h1>Landing</h1>
-        <h3>Welcome dear challenger</h3>
+        <h2>Footer</h2>
       </div>
     );
   }
 }
 
-export default Landing;
+export default Footer;
