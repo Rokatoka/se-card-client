@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
 import '../styles/Main.css';
 
-class Footer extends Component {
+import Card from './Card';
+
+class Main extends Component {
+
+  state = {
+    game_info: {
+      status: true,
+      player: [
+        {id: 1, hp: 30, mp: 0},
+        {id: 1, hp: 30, mp: 0}
+      ],
+
+      player_board: [ {card_id: 1} ],
+      opponent_board: [ {card_id: 1} ],
+
+      player_deck: [ {card_id: 1}],
+      opponent_deck: [ {card_id: 1}],
+
+      player_hand: [ {card_id: 1}],
+      opponent_hand: [ {card_id: 1}]
+    }
+  };
+
+
+
+
   render() {
     return (
       <div className="game_container">
@@ -14,7 +39,7 @@ class Footer extends Component {
           {this.renderBoardHelper(1)}
           {this.renderDeck(2)}
           {this.renderDeck(1)}
-          
+
           {this.renderHero(1)}
           {this.renderHeroPow(1)}
           {this.renderHand(1)}
@@ -27,7 +52,7 @@ class Footer extends Component {
   //------HAND ---//
   renderHand(player) {
     return (
-      <div className={"hand"+player}>
+      <div className={"hand hand"+player}>
         <p>Hand</p>
       </div>
     );
@@ -36,7 +61,7 @@ class Footer extends Component {
   //-----Hero---//
   renderHero(player) {
     return (
-      <div className={"hero"+player}>
+      <div className={"hero hero"+player}>
         <p>Hero</p>
       </div>
     );
@@ -45,16 +70,19 @@ class Footer extends Component {
   //-----HeroPow---//
   renderHeroPow(player) {
     return (
-      <div className={"hero_pow" + player}>
+      <div className={"hero_pow hero_pow" + player}>
         <p>HeroPow</p>
       </div>
     );
   }
 
+
+
   //-----BoardHelper---//
   renderBoardHelper(player) {
     return (
-      <div className={"board_ind" + player}>
+      <div className={"board_ind board_ind" + player}>
+        <Card player={player} />
         <p>board</p>
       </div>
     );
@@ -63,11 +91,11 @@ class Footer extends Component {
   //-----Deck---//
   renderDeck(player) {
     return (
-      <div className={"deck" + player}>
+      <div className={"deck deck" + player}>
         <p>deck</p>
       </div>
     );
   }
 }
 
-export default Footer;
+export default Main;
